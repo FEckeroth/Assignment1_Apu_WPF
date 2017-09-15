@@ -5,22 +5,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:viewModels="clr-namespace:Assignment_Apu.ViewModels"
-             xmlns:model="clr-namespace:Assignment_Apu.Models"
+             xmlns:model="clr-namespace:Assignment_Apu.Models" 
+             xmlns:simulator="clr-namespace:Assignment_Apu.Data.DatabaseSimulator"
              mc:Ignorable="d"
              d:DesignHeight="650"
-             d:DesignWidth="5"
+             d:DesignWidth="500"
              d:DataContext="{d:DesignInstance viewModels:RecipeViewModel, 
                                IsDesignTimeCreatable=True}"
              cal:Bind.AtDesignTime="True">
-    
+
     <UserControl.Resources>
         <DataTemplate x:Key="RecipeDataTemplate"
                       DataType="model:Recipe">
             <StackPanel Orientation="Horizontal">
-                <TextBox Text="{Binding Name}"
+                <TextBox Text="{Binding RecipeName}"
                          Width="100"
                          Margin="3 5 3 5"></TextBox>
-                <TextBox Text="{Binding NumOfIngredients}"
+                <TextBox Text="{Binding Ingredients.Count, Mode=OneWay}"
                          Width="100"
                          Margin="3 5 3 5"></TextBox>
                 <TextBox Text="{Binding Dish}"
@@ -35,11 +36,12 @@
             </StackPanel>
         </DataTemplate>
     </UserControl.Resources>
-    
+
     <Grid>
-            <StackPanel>
-                <ListView ItemsSource="{Binding Recipes}"
-                          ItemTemplate="{StaticResource RecipeDataTemplate}" />
-            </StackPanel>
+        <ListView ItemTemplate="{StaticResource RecipeDataTemplate}">
+            <ListView.ItemsSource>
+                <Binding Path="Recipes" Source="{x:Static simulator:MockDatabase.I}" />
+            </ListView.ItemsSource>
+        </ListView>
     </Grid>
 </UserControl>

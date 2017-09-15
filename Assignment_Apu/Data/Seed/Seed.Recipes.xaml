@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:models="clr-namespace:Assignment_Apu.Models">
+    <models:Ingredient x:Key="Ingredients.Flour" 
+                       IngredientName="Flour"/>
+
+    <models:Ingredient x:Key="Ingredients.Sugar" 
+                       IngredientName="Sugar"/>
+
+    <models:Ingredient x:Key="Ingredients.ChocolateChips" 
+                       IngredientName="Chocolate Chips"/>
+
+    <models:Ingredient x:Key="Ingredients.RawMeat" 
+                       IngredientName="Raw Meat"/>
+
+
+
+
+    <models:Recipe x:Key="Recipes.TestRecipe1"
+                   RecipeName="Test Recipe 1"
+                   Course="Appetizer"
+                   Dish="Meat"
+                   Description="Some description">
+        <models:Recipe.Ingredients>
+            <models:IngredientUse Ingredient="{StaticResource Ingredients.Sugar}"
+                                  Amount="2"
+                                  Unit="Cups"/>
+
+            <models:IngredientUse Ingredient="{StaticResource Ingredients.Flour}"
+                                  Amount=".5"
+                                  Unit="Tablespoons"/>
+        </models:Recipe.Ingredients>
+
+    </models:Recipe>
+
+</ResourceDictionary>

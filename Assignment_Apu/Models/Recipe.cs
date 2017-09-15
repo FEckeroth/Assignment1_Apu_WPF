@@ -1,41 +1,29 @@
 ﻿using Assignment_Apu.Enums;
 using Assignment_Apu.ViewModels;
-using System.Collections.ObjectModel;
+using Caliburn.Micro;
+using System.Windows.Markup;
 
 namespace Assignment_Apu.Models
 {
+    [ContentProperty(nameof(Ingredients))]
     public class Recipe
         : ViewModelBase
     {
-        private string name;
-
-        public string Name
+        private string recipeName;
+        public string RecipeName
         {
-            get { return name; }
+            get => recipeName;
             set
             {
-                name = value;
-                NotifyOfPropertyChange(() => Name);
-            }
-        }
-
-        private int numOfIngredients;
-
-        public int NumOfIngredients
-        {
-            get { return numOfIngredients; }
-            set
-            {
-                numOfIngredients = value;
-                NotifyOfPropertyChange(() => NumOfIngredients);
+                recipeName = value;
+                NotifyOfPropertyChange(() => RecipeName);
             }
         }
 
         private Dish dish;
-
         public Dish Dish
         {
-            get { return dish; }
+            get => dish;
             set
             {
                 dish = value;
@@ -44,10 +32,9 @@ namespace Assignment_Apu.Models
         }
 
         private Course course;
-
         public Course Course
         {
-            get { return course; }
+            get => course;
             set
             {
                 course = value;
@@ -56,10 +43,9 @@ namespace Assignment_Apu.Models
         }
 
         private string description;
-
         public string Description
         {
-            get { return description; }
+            get => description;
             set
             {
                 description = value;
@@ -67,16 +53,20 @@ namespace Assignment_Apu.Models
             }
         }
 
-        private ObservableCollection<Ingredient> ingredient;
-
-        public ObservableCollection<Ingredient> Ingredient
+        private BindableCollection<IngredientUse> ingredients;
+        public BindableCollection<IngredientUse> Ingredients
         {
-            get { return ingredient; }
+            get => ingredients;
             set
             {
-                ingredient = value;
-                NotifyOfPropertyChange(() => Ingredient);
+                ingredients = value;
+                NotifyOfPropertyChange(() => Ingredients);
             }
+        }
+
+        public Recipe()
+        {
+            Ingredients = new BindableCollection<IngredientUse>();
         }
     }
 }

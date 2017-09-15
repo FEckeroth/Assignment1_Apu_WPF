@@ -5,27 +5,14 @@ namespace Assignment_Apu.Models
     public class Ingredient
         : ViewModelBase
     {
-        private string name;
-
-        public string Name
+        private string _ingredientName;
+        public string IngredientName
         {
-            get { return name; }
+            get => _ingredientName;
             set
             {
-                name = value;
-                NotifyOfPropertyChange(() => Name);
-            }
-        }
-
-        private float amount;
-
-        public float Amount
-        {
-            get { return amount; }
-            set
-            {
-                amount = value;
-                NotifyOfPropertyChange(() => Amount);
+                _ingredientName = value;
+                NotifyOfPropertyChange(() => IngredientName);
             }
         }
     }

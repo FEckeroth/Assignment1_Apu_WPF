@@ -71,11 +71,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\FlexCommand.cs" />
+    <Compile Include="Data\DatabaseSimulator\MockDatabase.cs" />
     <Compile Include="Enums\Course.cs" />
     <Compile Include="Enums\Dish.cs" />
+    <Compile Include="Enums\MeasurementUnit.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\CookBook.cs" />
     <Compile Include="Models\Ingredient.cs" />
+    <Compile Include="Models\IngredientUse.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="ViewModels\AddRecipeViewModel.cs" />
     <Compile Include="ViewModels\EditRecipeViewModel.cs" />
@@ -118,6 +122,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Data\Seed\Seed.Recipes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RecipeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,5 +135,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
